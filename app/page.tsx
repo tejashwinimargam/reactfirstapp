@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const user = {
   name: "Hedy Lamarr",
-  imageUrl: "amma.jpg",
+  imageUrl: "rama.jpg",
   imageSize: 100,
 };
 
