@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useState } from 'react';
 
 const user = {
   name: "Hedy Lamarr",
@@ -15,6 +17,11 @@ const products = [
 
 export default function Home() {
   // Map the products array to create list items
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
   const listItems = products.map((product) => (
     <li
       key={product.id}
@@ -40,8 +47,22 @@ export default function Home() {
           height: user.imageSize,
         }}
       />
-      <ul>{listItems}</ul>
+      <ul>
+      {listItems}
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
+      </ul>
     </div>
   );
 }
-
+ 
+function MyButton({ count, onClick }) {
+  return (
+    <ul>
+    <button className="custom-button" onClick={onClick}>
+      Clicked {count} times
+    </button>
+    </ul>
+  );
+}
